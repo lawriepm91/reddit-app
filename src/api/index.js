@@ -9,6 +9,6 @@ export default class Api {
 
   async fetchAll(path) {
     const response = await this.client.get(path);
-    return response.data;
+    return response.data.data.children;
   }
 }
