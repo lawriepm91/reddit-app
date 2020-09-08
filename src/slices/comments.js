@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { format } from 'utils'
 
 const slice = createSlice({
   name: 'comments',
   initialState: [],
   reducers: {
-    updateComments(state, action) {
-      return action.payload.map(({ data }) => data);
+    updateComments(state, { payload }) {
+      return format(payload);
     }
   }
 });

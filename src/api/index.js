@@ -19,7 +19,7 @@ export default class Api {
 
     return [
       pic.data.children[0].data,
-      comments.data.children
+      comments.data.children.map(({ data }) => data)
     ];
   }
 }

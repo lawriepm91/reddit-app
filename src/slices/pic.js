@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { format } from 'utils'
 
 const slice = createSlice({
     name: 'pic',
     initialState: [],
     reducers: {
       updatePic(state, action) {
-        return action.payload;
+        return format([action.payload])[0];
       }
     }
   });
