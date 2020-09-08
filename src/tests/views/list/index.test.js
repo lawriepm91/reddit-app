@@ -1,4 +1,5 @@
 import { mount } from 'tests/helpers';
+import { pics } from 'tests/factory';
 import List from 'views/list';
 import { useTopPics } from 'hooks';
 import { picsSelector } from 'selectors';
@@ -34,12 +35,12 @@ describe('List', () => {
   describe('when error and loading are false', () => {
     beforeEach(() => {
       useTopPics.mockReturnValue([null, null]);
-      picsSelector.mockReturnValue([]);
+      picsSelector.mockReturnValue(pics);
       [component] = mount(List);
     });
 
     it('shows the pics', () => {
-      expect(component.find('.error')).toExist();
+      expect(component.find('Tile').length).toEqual(pics.length);
     });
   });
 });

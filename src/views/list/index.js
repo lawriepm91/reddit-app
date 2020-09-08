@@ -3,7 +3,7 @@ import { useTopPics } from 'hooks';
 import { useSelector } from 'react-redux';
 import { picsSelector } from 'selectors';
 import { Container, Row } from 'react-bootstrap';
-
+import Tile from './tile';
 
 export default function List() {
   const [isLoading, error] = useTopPics();
@@ -21,13 +21,11 @@ export default function List() {
     );
   }
 
-  console.log(pics);
-
   return (
     <Container>
       <Row>
-        {pics.map(({ data }) => data).map((pic) => (
-          JSON.stringify(pic)
+        {pics.map(({ data }) => (
+          <Tile {...data} key={data.id} />
         ))}
       </Row>
     </Container>
