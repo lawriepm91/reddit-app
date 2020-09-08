@@ -4,22 +4,22 @@ export default class Api {
   constructor() {
     this.client = axios.create({
       baseURL: 'https://www.reddit.com/',
-    })
+    });
   }
 
   async fetchAll(path) {
     const response = await this.client.get(path);
-    return response.data.data.children;
+    return response.data.data.children.map(({ data }) => data);
   }
 
   async fetchOne(path) {
     const {
-      data: [pic, comments]
+      data: [pic, comments],
     } = await this.client.get(path);
 
     return [
       pic.data.children[0].data,
-      comments.data.children.map(({ data }) => data)
+      comments.data.children.map(({ data }) => data),
     ];
   }
 }

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { format } from 'utils'
+import { createSlice } from '@reduxjs/toolkit';
+import { format } from 'utils';
 
 const slice = createSlice({
   name: 'pics',
@@ -7,8 +7,8 @@ const slice = createSlice({
   reducers: {
     updatePics(state, action) {
       return format(action.payload);
-    }
-  }
+    },
+  },
 });
 
 const { actions, reducer } = slice;

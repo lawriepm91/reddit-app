@@ -9,7 +9,7 @@ export default function List() {
   if (isLoading) {
     return (
       <p className="loading">Loading!</p>
-    )
+    );
   }
 
   if (error) {
@@ -22,9 +22,9 @@ export default function List() {
     <Container>
       <Row>
         {pics.map((pic) => (
-          <Tile {...pic} key={pic.id} />
+          <Tile pic={pic} key={pic.id} />
         ))}
       </Row>
     </Container>
-  )
+  );
 }

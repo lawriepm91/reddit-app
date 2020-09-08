@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { format } from 'utils'
+import { createSlice } from '@reduxjs/toolkit';
+import { format } from 'utils';
 
 const slice = createSlice({
   name: 'comments',
@@ -7,8 +7,8 @@ const slice = createSlice({
   reducers: {
     updateComments(state, { payload }) {
       return format(payload);
-    }
-  }
+    },
+  },
 });
 
 const { actions, reducer } = slice;

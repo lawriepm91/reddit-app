@@ -5,11 +5,11 @@ import Tile from 'views/tile';
 
 export default function Detail() {
   const [isLoading, pic, comments, error] = usePic();
-  
+
   if (isLoading) {
     return (
       <p className="loading">Loading!</p>
-    )
+    );
   }
 
   if (error) {
@@ -21,10 +21,10 @@ export default function Detail() {
   return (
     <div>
       <p>Detail page</p>
-      <Tile {...pic} />
+      <Tile pic={pic} />
       {comments.map((comment) => (
-        <Comment {...comment} key={comment.id} />
+        <Comment comment={comment} key={comment.id} />
       ))}
     </div>
-  )
+  );
 }

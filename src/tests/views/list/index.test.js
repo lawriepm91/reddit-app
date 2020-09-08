@@ -1,4 +1,4 @@
-import { mount } from 'tests/helpers';
+import mount from 'tests/helpers';
 import { pics } from 'tests/factory';
 import List from 'views/list';
 import { useTopPics } from 'hooks';

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { mount as render } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -6,7 +8,7 @@ import configureStore from 'redux-mock-store';
 import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { createMemoryHistory } from 'history';
 
-export function mount(Component, props = {}, options = {}) {
+export default function mount(Component, props = {}, options = {}) {
   const mockStore = configureStore(getDefaultMiddleware({ serializableCheck: false }));
   const history = createMemoryHistory();
 

@@ -3,4 +3,4 @@ pics.detail = (id = ':picId') => `/pics/${id}`;
 
 export default {
   pics,
-}
+};

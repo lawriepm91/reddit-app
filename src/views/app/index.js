@@ -12,5 +12,5 @@ export default function App() {
         <Route exact path={urls.pics.detail()}><Detail /></Route>
       </Switch>
     </Router>
-  )
+  );
 }

@@ -19,7 +19,7 @@ export function UpVote({ value }) {
       Image={UpArrow}
       value={value}
     />
-  )
+  );
 }
 
 export function DownVote({ value }) {
@@ -28,7 +28,7 @@ export function DownVote({ value }) {
       Image={DownArrow}
       value={value}
     />
-  )
+  );
 }
 
 export function Comments({ value }) {

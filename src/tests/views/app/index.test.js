@@ -1,12 +1,11 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import mount from 'tests/helpers';
 import App from 'views/app';
 
 describe('App', () => {
   let component;
 
   beforeEach(() => {
-    component = mount(<App />);
+    [component] = mount(App);
   });
 
   it('renders', () => {

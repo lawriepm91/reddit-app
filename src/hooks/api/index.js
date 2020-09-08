@@ -9,7 +9,6 @@ import { updateComments } from 'slices/comments';
 
 import Api from 'api';
 
-
 export function useTopPics() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
@@ -26,16 +25,15 @@ export function useTopPics() {
         setError(e);
       }
       setIsLoading(false);
-    }
+    };
     fetch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [isLoading, pics, error];
 }
 
 export function usePic() {
-  let { picId } = useParams();
+  const { picId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
   const dispatch = useDispatch();
@@ -53,9 +51,8 @@ export function usePic() {
         setError(e);
       }
       setIsLoading(false);
-    }
+    };
     fetch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [isLoading, pic, comments, error];
