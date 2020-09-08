@@ -11,4 +11,9 @@ export default class Api {
     const response = await this.client.get(path);
     return response.data.data.children;
   }
+
+  async fetchOne(path) {
+    const response = await this.client.get(path);
+    return response.data;
+  }
 }

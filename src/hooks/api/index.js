@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { picsSelector } from 'selectors';
 
 import { updatePics } from 'slices/pics';
@@ -7,7 +8,7 @@ import { updatePics } from 'slices/pics';
 import Api from 'api';
 
 
-export default function useTopPics() {
+export function useTopPics() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
   const dispatch = useDispatch();
@@ -29,4 +30,28 @@ export default function useTopPics() {
   }, []);
 
   return [isLoading, pics, error];
+}
+
+export function usePic() {
+  let { picId } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+  const [data, setData] = useState();
+  
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const api = new Api();
+        const data = await api.fetchOne(`r/pics/comments/${picId}.json`);
+        setData(data);
+      } catch (e) {
+        setError(e);
+      }
+      setIsLoading(false);
+    }
+    fetch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return [isLoading, data, error];
 }

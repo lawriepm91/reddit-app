@@ -1,1 +1,1 @@
-export { default as useTopPics } from './api';
+export { useTopPics, usePic } from './api';
