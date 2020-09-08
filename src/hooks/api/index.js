@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { picsSelector } from 'selectors';
+import { picsSelector, picSelector, commentsSelector } from 'selectors';
 
 import { updatePics } from 'slices/pics';
+import { updatePic } from 'slices/pic';
+import { updateComments } from 'slices/comments';
 
 import Api from 'api';
 
@@ -36,14 +38,17 @@ export function usePic() {
   let { picId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
-  const [data, setData] = useState();
-  
+  const dispatch = useDispatch();
+  const pic = useSelector(picSelector);
+  const comments = useSelector(commentsSelector);
+
   useEffect(() => {
     const fetch = async () => {
       try {
         const api = new Api();
-        const data = await api.fetchOne(`r/pics/comments/${picId}.json`);
-        setData(data);
+        const [originalPic, picComments] = await api.fetchOne(`r/pics/comments/${picId}.json`);
+        dispatch(updatePic(originalPic));
+        dispatch(updateComments(picComments));
       } catch (e) {
         setError(e);
       }
@@ -53,5 +58,5 @@ export function usePic() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return [isLoading, data, error];
+  return [isLoading, pic, comments, error];
 }

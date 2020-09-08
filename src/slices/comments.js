@@ -5,7 +5,7 @@ const slice = createSlice({
   initialState: [],
   reducers: {
     updateComments(state, action) {
-      return action.payload;
+      return action.payload.map(({ data }) => data);
     }
   }
 });
