@@ -2,7 +2,6 @@ import { mount } from 'tests/helpers';
 import { pics } from 'tests/factory';
 import List from 'views/list';
 import { useTopPics } from 'hooks';
-import { picsSelector } from 'selectors';
 
 jest.mock('hooks');
 jest.mock('selectors');
@@ -23,7 +22,7 @@ describe('List', () => {
 
   describe('when error is true', () => {
     beforeEach(() => {
-      useTopPics.mockReturnValue([null, true]);
+      useTopPics.mockReturnValue([null, null, true]);
       [component] = mount(List);
     });
 
@@ -34,8 +33,7 @@ describe('List', () => {
 
   describe('when error and loading are false', () => {
     beforeEach(() => {
-      useTopPics.mockReturnValue([null, null]);
-      picsSelector.mockReturnValue(pics);
+      useTopPics.mockReturnValue([null, pics, null]);
       [component] = mount(List);
     });
 
