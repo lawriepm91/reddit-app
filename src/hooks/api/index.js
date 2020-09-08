@@ -1,39 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { picsSelector } from 'selectors';
 
 import { updatePics } from 'slices/pics';
-
 
 import Api from 'api';
 
 
-function useApiOnMount(method, path) {
+export default function useTopPics() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
-  const [response, setResponse] = useState();
+  const dispatch = useDispatch();
+  const pics = useSelector(picsSelector);
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const api = new Api();
-        const data = await api[method](path);
-        setResponse(data);
+        const data = await api.fetchAll('r/pics/top.json?t=all');
+        dispatch(updatePics(data));
       } catch (e) {
         setError(e);
       }
       setIsLoading(false);
     }
     fetch();
-  }, [method, path]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return [isLoading, response, error];
-}
-
-export default function useTopPics() {
-  const dispatch = useDispatch();
-  const method = 'fetchAll';
-  const path = 'r/pics/top.json?t=all';
-  const [isLoading, response, error] = useApiOnMount(method, path);
-  dispatch(updatePics(response));
-  return [isLoading, error];
+  return [isLoading, pics, error];
 }
