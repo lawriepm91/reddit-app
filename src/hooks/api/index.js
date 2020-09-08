@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { updatePics } from 'slices/pics';
+
+
 import Api from 'api';
 
 
@@ -22,4 +27,13 @@ function useApiOnMount(method, path) {
   }, [method, path]);
 
   return [isLoading, response, error];
+}
+
+export default function useTopPics() {
+  const dispatch = useDispatch();
+  const method = 'fetchAll';
+  const path = 'r/pics/top.json?t=all';
+  const [isLoading, response, error] = useApiOnMount(method, path);
+  dispatch(updatePics(response));
+  return [isLoading, error];
 }
