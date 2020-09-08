@@ -1,29 +1,40 @@
 import React from 'react';
-import { useTopPics } from 'hooks';
 import { Container, Row } from 'react-bootstrap';
+import nextId from 'react-id-generator';
+import { useTopPics } from 'hooks';
 import Tile from 'views/tile';
+import Loading from 'loading';
 
 export default function List() {
   const [isLoading, pics, error] = useTopPics();
+  const renderBody = () => {
+    if (true) {
+      return (
+        <>
+          {[...Array(20)].map(() => (<Loading key={nextId()} />))}
+        </>
+      );
+    }
 
-  if (isLoading) {
-    return (
-      <p className="loading">Loading!</p>
-    );
-  }
+    if (error) {
+      return (
+        <p className="error">Uh oh!</p>
+      );
+    }
 
-  if (error) {
     return (
-      <p className="error">Uh oh!</p>
+      <>
+        {pics.map((pic) => (
+          <Tile pic={pic} key={pic.id} />
+        ))}
+      </>
     );
-  }
+  };
 
   return (
     <Container>
       <Row>
-        {pics.map((pic) => (
-          <Tile pic={pic} key={pic.id} />
-        ))}
+        {renderBody()}
       </Row>
     </Container>
   );

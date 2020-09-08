@@ -58,6 +58,6 @@ Tile.propTypes = {
     downs: PropTypes.string,
     author: PropTypes.string,
     num_comments: PropTypes.string,
-    created_utc: PropTypes.number,
+    created_utc: PropTypes.string,
   }).isRequired,
 };

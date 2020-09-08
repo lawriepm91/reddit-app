@@ -1,0 +1,43 @@
+.loading {
+  .loading-img {
+    height: 300px;
+  }
+
+  .loading-text {
+    &--primary {
+      height: 40px;
+      width: 80%;
+    }
+
+    &--secondary {
+      height: 20px;
+      width: 20%;
+    }
+  }
+}
+
+.animated-loading {
+  opacity: 0.5;
+  background: linear-gradient(135deg, rgba(211,223,232,.5) 30%,rgba(169,184,197,.5) 38%,rgba(168,182,193,.6) 41%,rgba(168,182,193,.6) 50%,rgba(168,182,193,.6) 50%,rgba(169,184,197,.6) 51%,rgba(211,223,232,.6) 57%,rgba(211,223,232,.6) 80%,rgba(211,223,232,.6) 80%);
+  background-size: 1200% 1200%;
+  -webkit-animation: fade 2s ease infinite reverse;
+  -moz-animation: fade 2s ease infinite reverse;
+  animation: fade 2s ease infinite reverse;
+}
+
+@-webkit-keyframes fade {
+  0% { background-position: 0% 92% }
+  50% { background-position: 100% 9% }
+  100% { background-position: 0% 92% }
+}
+
+@-moz-keyframes fade {
+  0% { background-position:0% 92% }
+  50%{ background-position:100% 9% }
+  100%{ background-position:0% 92% }
+}
+
+@keyframes fade { 
+  0% { background-position: 0% 92% }
+  100% { background-position: 100% 9% }
+}
