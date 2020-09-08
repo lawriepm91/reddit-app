@@ -1,0 +1,7 @@
+@import 'src/index.scss';
+
+.tile {
+  img {
+    @extend .w-100, .h-100, .overflow-hidden;
+  }   
+}

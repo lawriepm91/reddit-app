@@ -3,7 +3,7 @@ import { useTopPics } from 'hooks';
 import { useSelector } from 'react-redux';
 import { picsSelector } from 'selectors';
 import { Container, Row } from 'react-bootstrap';
-import Tile from './tile';
+import Tile from 'views/tile';
 
 export default function List() {
   const [isLoading, error] = useTopPics();
