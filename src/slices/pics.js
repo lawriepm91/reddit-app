@@ -1,19 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
+import moment from 'moment';
 import numeral from 'numeral';
 
 const formatSettings = [
   {
     name: 'ups',
-    formatter: (value) => numeral(value).format('0.0a')
+    formatter: (value) => numeral(value).format('0.a')
   },
   {
     name: 'downs',
-    formatter: (value) => numeral(value).format('0.0a')
+    formatter: (value) => numeral(value).format('0.a')
   },
   {
     name: 'num_comments',
-    formatter: (value) => numeral(value).format('0.0a')
+    formatter: (value) => numeral(value).format('0.a')
   },
+  {
+    name: 'created_utc',
+    formatter: (value) => moment(value * 1000).fromNow()
+  }
 ];
 
 const formatList = (list) => list.map((pic) => {
