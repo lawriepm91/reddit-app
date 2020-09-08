@@ -1,5 +1,5 @@
 const pics = () => '/pics';
-pics.detail = (id = ':picsId') => `/pics/${id}`;
+pics.detail = (id = ':picId') => `/pics/${id}`;
 
 export default {
   pics,
