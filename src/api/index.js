@@ -13,7 +13,13 @@ export default class Api {
   }
 
   async fetchOne(path) {
-    const response = await this.client.get(path);
-    return response.data;
+    const {
+      data: [pic, comments]
+    } = await this.client.get(path);
+
+    return [
+      pic.data.children[0].data,
+      comments.data.children
+    ];
   }
 }
