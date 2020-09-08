@@ -2,6 +2,8 @@ import React from 'react';
 import { useTopPics } from 'hooks';
 import { useSelector } from 'react-redux';
 import { picsSelector } from 'selectors';
+import { Container, Row } from 'react-bootstrap';
+
 
 export default function List() {
   const [isLoading, error] = useTopPics();
@@ -9,21 +11,25 @@ export default function List() {
 
   if (isLoading) {
     return (
-      <p>Loading!</p>
+      <p className="loading">Loading!</p>
     )
   }
 
   if (error) {
     return (
-      <p>Uh oh!</p>
+      <p className="error">Uh oh!</p>
     );
   }
 
   console.log(pics);
 
   return (
-    <div>
-      <h1>List page</h1>
-    </div>
+    <Container>
+      <Row>
+        {pics.map(({ data }) => data).map((pic) => (
+          JSON.stringify(pic)
+        ))}
+      </Row>
+    </Container>
   )
 }

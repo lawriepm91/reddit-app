@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import List from 'views/list';
 import urls from 'urls';
 
 export default function App() {
   return (
-    <div>
+    <Router>
       <Switch>
         <Route path={urls.pics()}><List /></Route>
       </Switch>
-    </div>
+    </Router>
   )
 }
