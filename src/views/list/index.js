@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch, useHistory } from 'react-router-dom';
 import nextId from 'react-id-generator';
 import { useTopPics } from 'hooks';
 import Navbar from 'navbar';
@@ -13,6 +13,11 @@ import urls from 'urls';
 export default function List() {
   const [isLoading, pics, error] = useTopPics();
   const match = useRouteMatch();
+  const history = useHistory();
+
+  const handleClick = (id) => {
+    history.push(urls.pics.detail(id));
+  };
 
   const renderBody = () => {
     if (isLoading) {
@@ -32,7 +37,12 @@ export default function List() {
     return (
       <>
         {pics.map((pic) => (
-          <Tile pic={pic} key={pic.id} />
+          <Tile
+            pic={pic}
+            key={pic.id}
+            className="cursor-pointer"
+            handleClick={() => handleClick(pic.id)}
+          />
         ))}
       </>
     );

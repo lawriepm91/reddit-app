@@ -21,6 +21,6 @@ Comment.propTypes = {
   comment: PropTypes.shape({
     body: PropTypes.string,
     author: PropTypes.string,
-    created_utc: PropTypes.number,
+    created_utc: PropTypes.string,
   }).isRequired,
 };

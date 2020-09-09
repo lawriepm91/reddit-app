@@ -11,4 +11,18 @@ describe('App', () => {
   it('renders', () => {
     expect(component.find(App)).toExist();
   });
+
+  describe('at', () => {
+    describe('"/" route', () => {
+      it('renders <List />', () => {
+        expect(component.find('List')).toExist();
+      });
+    });
+
+    describe('"/pics" route', () => {
+      it('renders <List />', () => {
+        expect(component.find('List')).toExist();
+      });
+    });
+  });
 });

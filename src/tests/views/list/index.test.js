@@ -1,7 +1,8 @@
 import mount from 'tests/helpers';
 import { pics } from 'tests/factory';
 import List from 'views/list';
-import { useTopPics } from 'hooks';
+import { useTopPics, usePic } from 'hooks';
+import urls from 'urls';
 
 jest.mock('hooks');
 jest.mock('selectors');
@@ -15,8 +16,8 @@ describe('List', () => {
       [component] = mount(List);
     });
 
-    it('shows the loading message', () => {
-      expect(component.find('.loading')).toExist();
+    it('renders <LoadingTile /> 20 times', () => {
+      expect(component.find('LoadingTile').length).toEqual(20);
     });
   });
 
@@ -26,8 +27,8 @@ describe('List', () => {
       [component] = mount(List);
     });
 
-    it('shows the error message', () => {
-      expect(component.find('.error')).toExist();
+    it('renders <Error />', () => {
+      expect(component.find('Error')).toExist();
     });
   });
 
@@ -39,6 +40,19 @@ describe('List', () => {
 
     it('shows the pics', () => {
       expect(component.find('Tile').length).toEqual(pics.length);
+    });
+  });
+
+  describe('at', () => {
+    describe('"/pics/1" route', () => {
+      beforeEach(() => {
+        usePic.mockReturnValue([true]);
+        [component] = mount(List, null, { route: urls.pics.detail('1') });
+      });
+
+      it('renders <Detail />', () => {
+        expect(component.find('Detail')).toExist();
+      });
     });
   });
 });
