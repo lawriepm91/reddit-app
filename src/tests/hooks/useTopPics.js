@@ -2,42 +2,36 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import mount from 'tests/helpers';
-import { pics, comments } from 'tests/factory';
+import { pics } from 'tests/factory';
 
 import Api from 'api';
-import { usePic } from 'hooks';
-import { updatePic } from 'slices/pic';
-import { updateComments } from 'slices/comments';
-import { commentsSelector, picSelector } from 'selectors';
+import { useTopPics } from 'hooks';
+import { updatePics } from 'slices/pics';
+import { picsSelector } from 'selectors';
 
 jest.mock('api');
 jest.mock('selectors');
 
 function HookTestComponent() {
-  const [isLoading, pic, picComments, error] = usePic();
+  const [isLoading, picsProp, error] = useTopPics();
   return (
     <div
       isloading={isLoading.toString()}
-      pic={pic}
-      comments={picComments}
+      pic={picsProp}
       error={error}
     />
   );
 }
 
-describe('usePic', () => {
+describe('useTopPics', () => {
   let component;
   let store;
 
   describe('with a resolved api call', () => {
     beforeEach(async () => {
-      commentsSelector.mockReturnValue(comments);
-      picSelector.mockReturnValue(pics[0]);
+      picsSelector.mockReturnValue(pics);
       Api.mockImplementation(() => ({
-        fetchOne: jest.fn().mockResolvedValue([
-          pics[0],
-          comments,
-        ]),
+        fetchAll: jest.fn().mockResolvedValue(pics),
       }));
 
       await act(async () => {
@@ -47,22 +41,13 @@ describe('usePic', () => {
       component.update();
     });
 
-    it('updates the store with comments', () => {
-      expect(store.dispatch).toHaveBeenCalledWith(updateComments(comments));
+    it('updates the store with pics', () => {
+      expect(store.dispatch).toHaveBeenCalledWith(updatePics(pics));
     });
 
-    it('updates the store with a pic', () => {
-      expect(store.dispatch).toHaveBeenCalledWith(updatePic(pics[0]));
-    });
-
-    it('returns comments to the component', () => {
-      const { comments: commentProp } = component.find('div').props();
-      expect(commentProp).toEqual(comments);
-    });
-
-    it('return a pic to the component', () => {
-      const { pic: picProp } = component.find('div').props();
-      expect(picProp).toEqual(pics[0]);
+    it('returns pics to the component', () => {
+      const { pics: picsProp } = component.find('div').props();
+      expect(picsProp).toEqual(pics);
     });
 
     it('returns isLoading as "false" to the component', () => {
@@ -74,7 +59,7 @@ describe('usePic', () => {
   describe('with an unresolved api call', () => {
     beforeEach(async () => {
       Api.mockImplementation(() => ({
-        fetchOne: jest.fn().mockRejectedValue('error'),
+        fetchAll: jest.fn().mockRejectedValue('error'),
       }));
 
       await act(async () => {
