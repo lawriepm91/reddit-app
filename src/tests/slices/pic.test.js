@@ -1,22 +1,20 @@
 /* eslint-disable prefer-destructuring */
-import reducer, { updatePics } from 'slices/pics';
+import reducer, { updatePic } from 'slices/pic';
 
-const unFormattedPics = [
-  {
-    ups: 1001,
-    downs: 1900,
-    num_comments: 5500,
-    created_utc: 1592410647,
-  },
-];
+const unFormattedPic = {
+  ups: 1001,
+  downs: 1900,
+  num_comments: 5500,
+  created_utc: 1592410647,
+};
 
-describe('PicsSlice', () => {
-  describe('updatePics', () => {
+describe('PicSlice', () => {
+  describe('updatePic', () => {
     let state;
 
     beforeEach(() => {
-      const action = updatePics(unFormattedPics);
-      state = reducer(undefined, action)[0];
+      const action = updatePic(unFormattedPic);
+      state = reducer(undefined, action);
     });
 
     const itFormats = (key, assertion) => {

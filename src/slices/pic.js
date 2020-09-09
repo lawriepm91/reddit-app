@@ -5,8 +5,8 @@ const slice = createSlice({
   name: 'pic',
   initialState: [],
   reducers: {
-    updatePic(state, action) {
-      return format([action.payload])[0];
+    updatePic(state, { payload }) {
+      return format([payload])[0];
     },
   },
 });
