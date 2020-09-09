@@ -8,8 +8,8 @@ import urls from 'urls';
 export default function App() {
   return (
     <main className="primary-background min-vh-100">
-      <Navbar />
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path={['/', urls.pics()]}><List /></Route>
           <Route exact path={urls.pics.detail()}><Detail /></Route>
