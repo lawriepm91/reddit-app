@@ -2,8 +2,6 @@
 import reducer, { updateComments } from 'slices/comments';
 import { comments } from 'tests/factory';
 
-jest.mock('utils');
-
 describe('CommentSlice', () => {
   describe('updateComment', () => {
     let state;
