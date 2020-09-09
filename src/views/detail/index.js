@@ -33,7 +33,7 @@ export default function Detail() {
   };
 
   return (
-    <Container className="">
+    <Container>
       <Row>
         {renderBody()}
       </Row>
