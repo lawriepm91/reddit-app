@@ -7,11 +7,11 @@
 
 // * fonts * //
 
-// * colours * //
-
 .color-grey {
   color: map-get($font-colors, neutal);
 }
+
+// * background colours * //
 
 .primary-background {
   background-color: map-get($theme, background-color);
