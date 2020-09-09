@@ -25,21 +25,23 @@ export default function Tile({ pic }) {
 
   return (
     <Col
-      sm={12}
-      md={{ span: 6, offset: 3 }}
-      className="tile cursor-pointer"
+      xs={12}
+      md={{ span: 10, offset: 1 }}
+      lg={{ span: 8, offset: 2 }}
+      className="tile p-3 rounded cursor-pointer mb-3 bg-white"
       onClick={handleClick}
     >
-      <p>
+      <small className="color-grey mb-2">
         Posted by u/
         {author}
+        &nbsp;
         {createdAt}
-      </p>
+      </small>
       <h4>{title}</h4>
       <div>
         <Image src={url} />
       </div>
-      <div className="d-flex">
+      <div className="d-flex mt-2">
         <UpVote value={ups} />
         <DownVote value={downs} />
         <Comments value={noOfComment} />

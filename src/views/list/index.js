@@ -4,11 +4,12 @@ import nextId from 'react-id-generator';
 import { useTopPics } from 'hooks';
 import Tile from 'views/tile';
 import Loading from 'loading';
+import Error from 'error';
 
 export default function List() {
   const [isLoading, pics, error] = useTopPics();
   const renderBody = () => {
-    if (true) {
+    if (isLoading) {
       return (
         <>
           {[...Array(20)].map(() => (<Loading key={nextId()} />))}
@@ -16,9 +17,12 @@ export default function List() {
       );
     }
 
-    if (error) {
+    if (true) {
+    // if (error) {
       return (
-        <p className="error">Uh oh!</p>
+        <>
+          <Error />
+        </>
       );
     }
 
@@ -33,7 +37,7 @@ export default function List() {
 
   return (
     <Container>
-      <Row>
+      <Row className="mx-0">
         {renderBody()}
       </Row>
     </Container>

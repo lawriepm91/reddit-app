@@ -1,5 +1,18 @@
 @import '~bootstrap/scss/bootstrap.scss';
+@import 'abstracts/_variables.scss';
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+// * fonts * //
+
+// * colours * //
+
+.color-grey {
+  color: map-get($font-colors, neutal);
+}
+
+.primary-background {
+  background-color: map-get($theme, background-color);
 }

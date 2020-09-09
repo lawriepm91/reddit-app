@@ -5,9 +5,10 @@ import './index.scss';
 export default function LoadingTile() {
   return (
     <Col
-      sm={12}
-      md={{ span: 6, offset: 3 }}
-      className="loading p-3"
+      xs={12}
+      md={{ span: 10, offset: 1 }}
+      lg={{ span: 8, offset: 2 }}
+      className="loading p-3 rounded mb-3 bg-white"
     >
       <div className="loading-text--secondary animated-loading mb-1" />
       <div className="loading-text--primary animated-loading mb-2" />

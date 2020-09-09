@@ -6,9 +6,9 @@ import { ReactComponent as CommentsIcon } from 'assets/comment.svg';
 
 function Icon({ value, Image }) {
   return (
-    <div className="d-flex">
-      <Image height="20px" width="20px" />
-      <p>{value}</p>
+    <div className="d-flex align-items-center mr-2">
+      <Image height="15" width="15" />
+      <small className="color-grey">{value}</small>
     </div>
   );
 }
