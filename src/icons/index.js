@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ReactComponent as UpArrow } from 'assets/upvote.svg';
 import { ReactComponent as DownArrow } from 'assets/downvote.svg';
@@ -13,6 +14,11 @@ function Icon({ value, Image }) {
   );
 }
 
+Icon.propTypes = {
+  Image: PropTypes.element.isRequired,
+  value: PropTypes.string.isRequired,
+};
+
 export function UpVote({ value }) {
   return (
     <Icon
@@ -21,6 +27,10 @@ export function UpVote({ value }) {
     />
   );
 }
+
+UpVote.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 export function DownVote({ value }) {
   return (
@@ -31,6 +41,10 @@ export function DownVote({ value }) {
   );
 }
 
+DownVote.propTypes = {
+  value: PropTypes.string.isRequired,
+};
+
 export function Comments({ value }) {
   return (
     <Icon
@@ -39,3 +53,7 @@ export function Comments({ value }) {
     />
   );
 }
+
+Comments.propTypes = {
+  value: PropTypes.string.isRequired,
+};
