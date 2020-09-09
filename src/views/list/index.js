@@ -17,12 +17,9 @@ export default function List() {
       );
     }
 
-    if (true) {
-    // if (error) {
+    if (error) {
       return (
-        <>
-          <Error />
-        </>
+        <Error />
       );
     }
 

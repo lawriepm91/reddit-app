@@ -6,7 +6,7 @@ import urls from 'urls';
 
 export default function App() {
   return (
-    <main className="primary-background vh-100">
+    <main className="primary-background min-vh-100">
       <Router>
         <Switch>
           <Route exact path={['/', urls.pics()]}><List /></Route>
