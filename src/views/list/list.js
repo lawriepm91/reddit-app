@@ -7,7 +7,7 @@ import Loading from 'loading';
 import Error from 'error';
 import urls from 'urls';
 
-export default function List() {
+export default function PicList() {
   const [isLoading, pics, error] = useTopPics();
   const history = useHistory();
 

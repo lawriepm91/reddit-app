@@ -30,7 +30,7 @@ describe('Award', () => {
 
   describe('when name is not equal to Platinum, Gold or Silver', () => {
     beforeEach(() => {
-      component = render();
+      component = render('test');
     });
 
     it('does not render', () => {

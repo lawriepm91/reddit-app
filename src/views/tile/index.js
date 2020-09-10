@@ -28,7 +28,18 @@ export default function Tile({
     if (isImageUrl(url)) {
       return <Image src={url} className="tile-image--large" />;
     }
-    return <h4 className="text-break"><a href={url}>{url}</a></h4>;
+    return (
+      <h4 className="text-break">
+        <a
+          href={url}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          {url}
+        </a>
+      </h4>
+    );
   };
 
   return (
