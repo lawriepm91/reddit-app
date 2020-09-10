@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import nextId from 'react-id-generator';
 import isImageUrl from 'is-image-url';
 import { UpVote, DownVote, Comments } from 'icons';
 import Award from 'views/tile/award';
@@ -14,7 +15,7 @@ export default function Tile({
 }) {
   const {
     url,
-    author,
+    author, 
     title,
     created_utc: createdAt,
     ups,
@@ -45,7 +46,7 @@ export default function Tile({
           &nbsp;
           {createdAt}
         </small>
-        {awardings.map((award) => <Award award={award} />)}
+        {awardings.map((award) => <Award award={award} key={nextId()} />)}
       </div>
       <h4>{title}</h4>
       <div>
@@ -72,13 +73,13 @@ Tile.propTypes = {
     author: PropTypes.string,
     num_comments: PropTypes.string,
     created_utc: PropTypes.string,
-    all_awardings: PropTypes.shape([{
-      resized_icons: PropTypes.shape([{
+    all_awardings: PropTypes.arrayOf(PropTypes.shape({
+      resized_icons: PropTypes.arrayOf(PropTypes.shape({
         url: PropTypes.string.isRequired,
-      }]),
+      })),
       count: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-    }]),
+    })),
   }).isRequired,
   className: PropTypes.string,
   handleClick: PropTypes.func,

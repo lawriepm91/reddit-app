@@ -15,7 +15,7 @@ function Icon({ value, Image }) {
 }
 
 Icon.propTypes = {
-  Image: PropTypes.element.isRequired,
+  Image: PropTypes.elementType.isRequired,
   value: PropTypes.string.isRequired,
 };
 

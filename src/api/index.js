@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const removeKind = (res) => res.map(({ data }) => data);
+
 export default class Api {
   constructor() {
     this.client = axios.create({
@@ -8,8 +10,8 @@ export default class Api {
   }
 
   async fetchAll(path) {
-    const response = await this.client.get(path);
-    return response.data.data.children.map(({ data }) => data);
+    const { data: { data: { children } } } = await this.client.get(path);
+    return removeKind(children);
   }
 
   async fetchOne(path) {
@@ -18,8 +20,8 @@ export default class Api {
     } = await this.client.get(path);
 
     return [
-      pic.data.children[0].data,
-      comments.data.children.map(({ data }) => data),
+      removeKind(pic.data.children)[0],
+      removeKind(comments.data.children),
     ];
   }
 }

@@ -1,6 +1,6 @@
 const award = {
   resized_icons: [{
-    url: test,
+    url: 'test',
   }],
   count: 1,
   name: 'test',

@@ -26,9 +26,9 @@ export default function Award({ award }) {
 
 Award.propTypes = {
   award: PropTypes.shape({
-    resized_icons: PropTypes.shape([{
+    resized_icons: PropTypes.arrayOf(PropTypes.shape({
       url: PropTypes.string.isRequired,
-    }]),
+    })),
     count: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
