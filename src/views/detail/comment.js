@@ -5,14 +5,16 @@ export default function Comment({ comment }) {
   const { body, author, created_utc: createdAt } = comment;
   return (
     <div>
-      <p>
+      <small>
         {author}
         {' '}
-        &#183;
-        {' '}
-        {createdAt}
-      </p>
-      <p>{ body }</p>
+        <span className="color-grey">
+          &#183;
+          {' '}
+          {createdAt}
+        </span>
+      </small>
+      <p className="text-break">{ body }</p>
     </div>
   );
 }

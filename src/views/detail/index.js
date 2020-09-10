@@ -21,11 +21,13 @@ export default function Detail() {
   }
 
   return (
-    <>
-      <Tile pic={pic} />
-      {comments.map((comment) => (
-        <Comment comment={comment} key={comment.id} />
-      ))}
-    </>
+    <Tile pic={pic}>
+      <>
+        <hr />
+        {comments.map((comment) => (
+          <Comment comment={comment} key={comment.id} />
+        ))}
+      </>
+    </Tile>
   );
 }
