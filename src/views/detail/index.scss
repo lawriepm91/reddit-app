@@ -1,0 +1,11 @@
+@import 'src/index.scss';
+
+@include media-breakpoint-down(md) {
+  .comment {
+    .comment-text {
+      &--body {
+        font-size: map-get($font-sizes, sm);
+      }
+    }
+  }
+}

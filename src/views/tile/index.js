@@ -30,7 +30,7 @@ export default function Tile({
       className={`tile p-3 rounded ${className} mb-3 bg-white`}
       onClick={handleClick}
     >
-      <div className="d-flex mb-2 align-items-center">
+      <div className="d-flex mb-2 align-items-center flex-wrap">
         <small className="color-grey">
           Posted by u/
           {author}

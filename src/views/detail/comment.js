@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './index.scss';
 
 export default function Comment({ comment }) {
   const { body, author, created_utc: createdAt } = comment;
   return (
-    <div>
+    <div className="comment">
       <small>
         {author}
         {' '}
@@ -14,7 +15,7 @@ export default function Comment({ comment }) {
           {createdAt}
         </span>
       </small>
-      <p className="text-break">{ body }</p>
+      <p className="text-break comment-text--body">{ body }</p>
     </div>
   );
 }
