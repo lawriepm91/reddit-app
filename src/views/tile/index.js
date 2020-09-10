@@ -15,7 +15,7 @@ export default function Tile({
 }) {
   const {
     url,
-    author, 
+    author,
     title,
     created_utc: createdAt,
     ups,

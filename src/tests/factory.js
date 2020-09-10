@@ -1,10 +1,11 @@
-const award = {
+export const award = (options = {}) => ({
   resized_icons: [{
     url: 'test',
   }],
   count: 1,
   name: 'test',
-};
+  ...options,
+});
 
 export const pics = [
   {
@@ -16,7 +17,7 @@ export const pics = [
     downs: '122',
     num_comments: '122',
     id: '1',
-    all_awardings: [award],
+    all_awardings: [award()],
   },
   {
     url: 'https://test.com',
@@ -27,7 +28,7 @@ export const pics = [
     downs: '122',
     num_comments: '122',
     id: '2',
-    all_awardings: [award],
+    all_awardings: [award()],
   },
 ];
 
