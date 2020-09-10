@@ -3,7 +3,10 @@ import picsReducer from 'slices/pics';
 import picReducer from 'slices/pic';
 import commentsReducer from 'slices/comments';
 
-const middleware = getDefaultMiddleware({ serializableCheck: false });
+const middleware = getDefaultMiddleware({
+  serializableCheck: false,
+  immutableCheck: false,
+});
 
 const reducer = {
   pics: picsReducer,
