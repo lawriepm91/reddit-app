@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { format } from 'utils';
+import { format, filterNsfw } from 'utils';
 
 const slice = createSlice({
   name: 'pics',
   initialState: [],
   reducers: {
     updatePics(state, { payload }) {
-      return format(payload);
+      const filteredResponse = filterNsfw(payload);
+      return format(filteredResponse);
     },
   },
 });

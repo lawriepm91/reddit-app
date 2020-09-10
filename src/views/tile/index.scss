@@ -20,6 +20,11 @@
 }
 
 @include media-breakpoint-down(md) {
+  .tile {
+    h4 {
+      font-size: map-get($font-sizes, md);
+    }
+  }
   @include set-image-size(300px);
 }
 
