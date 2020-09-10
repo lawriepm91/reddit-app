@@ -3,7 +3,7 @@ import { format, filterNsfw } from 'utils';
 
 const slice = createSlice({
   name: 'pic',
-  initialState: [],
+  initialState: {},
   reducers: {
     updatePic(state, { payload }) {
       const filteredResponse = filterNsfw([payload])[0];
