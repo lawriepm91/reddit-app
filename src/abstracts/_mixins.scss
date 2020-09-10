@@ -1,0 +1,5 @@
+@mixin fit-image($max-height) {
+  object-fit: contain;
+  object-position: center;
+  max-height: $max-height;
+}
