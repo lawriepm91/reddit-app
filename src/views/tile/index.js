@@ -1,8 +1,9 @@
 import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import isImageUrl from 'is-image-url';
 import { UpVote, DownVote, Comments } from 'icons';
-import Award from './award';
+import Award from 'views/tile/award';
 import './index.scss';
 
 export default function Tile({
@@ -21,6 +22,13 @@ export default function Tile({
     num_comments: noOfComment,
     all_awardings: awardings,
   } = pic;
+
+  const renderPic = () => {
+    if (isImageUrl(url)) {
+      return <Image src={url} className="tile-image--large" />;
+    }
+    return <h4 className="text-break"><a href={url}>{url}</a></h4>;
+  };
 
   return (
     <Col
@@ -41,7 +49,7 @@ export default function Tile({
       </div>
       <h4>{title}</h4>
       <div>
-        <Image src={url} className="tile-image--large" />
+        {renderPic()}
       </div>
       <div className="d-flex mt-2">
         <UpVote value={ups} />
