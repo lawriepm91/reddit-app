@@ -1,6 +1,6 @@
 ## Enviroments
 
-The application had been developed in:
+This application has been developed in:
 
 <ul>
 	<li>Node v12.18.3</li>
