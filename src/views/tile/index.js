@@ -26,7 +26,7 @@ export default function Tile({
 
   const renderPic = () => {
     if (isImageUrl(url)) {
-      return <Image src={url} className="tile-image--large" />;
+      return <Image src={url} className="tile-image--large h-100 w-100 overflow-hidden" />;
     }
     return (
       <h4 className="text-break">
