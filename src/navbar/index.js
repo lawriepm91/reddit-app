@@ -6,6 +6,7 @@ import {
   Navbar as Nav,
   Nav as InnerNav,
 } from 'react-bootstrap';
+import { ReactComponent as Logo } from 'assets/logo.svg';
 import urls from 'urls';
 
 export default function Navbar() {
@@ -19,7 +20,7 @@ export default function Navbar() {
     <Nav bg="white" className="mb-3">
       <Nav.Brand>
         <Link to="/">
-          Reddit
+          <Logo width="50" height="30" />
         </Link>
       </Nav.Brand>
       {isOnDetailPage && (
